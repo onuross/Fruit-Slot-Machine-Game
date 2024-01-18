@@ -1,72 +1,30 @@
 # Fruit Slot Machine Game
 
-Welcome to the Fruit Slot Machine Game! This Java program simulates a slot machine where the player deposits money and gets three random fruits. The player earns money based on the combination of fruits obtained.
+Experience the excitement of the Fruit Slot Machine Game! This Java program lets players deposit money and try their luck at winning based on randomly chosen fruits.
 
-## How to Play
+## How the Game Works
 
-1. Enter the amount of money you want to deposit when prompted.
-2. Three fruits will be randomly selected from the list: ["ORANGE", "APPLE", "MELON", "CHERRY", "BANANA", "STRAWBERRY"].
-3. If all three fruits are the same, you earn three times your deposit. If two fruits are the same, you earn twice your deposit. Otherwise, you don't earn anything.
-4. Choose to play again ('y') or exit ('n').
+1. The player enters the amount of money they want to deposit.
+2. Three fruits are randomly selected from the available fruit options: "ORANGE," "APPLE," "MELON," "CHERRY," "BANANA," and "STRAWBERRY."
+3. The chosen fruits are displayed.
+4. If all three fruits match, the player earns triple the deposited money.
+5. If two out of three fruits match, the player earns double the deposited money.
+6. If no fruits match, the player doesn't earn any money.
+7. The player can choose to play again by entering 'y' or exit the game by entering any other letter.
 
-## Game Implementation
+## Game Execution
 
-The game uses a loop to allow players to play multiple times. It tracks the total deposited money, total earned money, and calculates the overall profit. The program displays statistics at the end of the game.
+The game continues until the player decides not to play anymore. After each round, the total deposited money, total earned money, and overall profit are displayed. The player can see their cumulative statistics at the end of the game.
 
-```java
-import java.util.Random;
-import java.util.Scanner;
+## Code Explanation
 
-public class Game {
-    public static void main(String[] args) {
+The Java code uses a `do-while` loop to allow players to play multiple rounds. Randomly chosen fruits are stored in an array, and the player's input is used to determine the deposited money. The code checks for matching fruits and calculates earnings accordingly. The game statistics, including total deposited money, total earned money, and profit, are displayed at the end of the game.
 
-        Scanner input = new Scanner(System.in);
-        Random random = new Random();
-        String[] fruits = {"ORANGE", "APPLE", "MELON", "CHERRY", "BANANA", "STRAWBERRY"};
-        String[] chosenFruits = new String[3];
-        String cont;
-        double totalDeposit = 0, totalEarned = 0, earned;
+To play the game:
 
-        do {
-            System.out.print("Enter The Money That You Want to Deposit: ");
-            double money = input.nextDouble();
-            totalDeposit += money;
+1. Compile the Java code.
+2. Run the compiled program.
+3. Enter the money you want to deposit.
+4. Enjoy the excitement of the slot machine and see if you can beat the odds!
 
-            // Choosing three random fruits and adding them to chosenFruits
-            for (int i = 0; i < 3; i++) {
-                int randomIndex = random.nextInt(fruits.length);
-                chosenFruits[i] = fruits[randomIndex];
-            }
-
-            System.out.println("\nFruits Are Selecting Randomly:");
-            System.out.println(chosenFruits[0] + " " + chosenFruits[1] + " " + chosenFruits[2]);
-
-            // Checking for matched fruits and earned money
-            if ((chosenFruits[0].equals(chosenFruits[1])) && (chosenFruits[1].equals(chosenFruits[2]))) {
-                earned = money * 3;
-                System.out.printf("Deposited Money: %.2f₺\nEarned Money: %.2f₺\n", money, earned);
-            } else if ((chosenFruits[0].equals(chosenFruits[1])) || (chosenFruits[1].equals(chosenFruits[2]))
-                    || (chosenFruits[0].equals(chosenFruits[2]))) {
-                earned = money * 2;
-                System.out.printf("Deposited Money: %.2f₺\nEarned Money: %.2f₺\n", money, earned);
-            } else {
-                earned = 0;
-                System.out.printf("Deposited Money: %.2f₺\nEarned Money: %.2f₺\n", money, earned);
-            }
-
-            totalEarned += earned;
-
-            System.out.print("Do You Want to Play Again (y/n): ");
-            cont = input.next();
-            System.out.println();
-
-        } while (cont.equals("y"));
-
-        double profit = totalEarned - totalDeposit;
-
-        // Printing the statistics when the game ends after the user enters a letter other than 'y'
-        System.out.printf("Total Deposited Money: %.2f₺\n", totalDeposit);
-        System.out.printf("Total Earned Money: %.2f₺\n", totalEarned);
-        System.out.printf("Profit: %.2f₺\n", profit);
-    }
-}
+Feel free to customize and enhance the game based on your preferences. Enjoy the fun and best of luck!
